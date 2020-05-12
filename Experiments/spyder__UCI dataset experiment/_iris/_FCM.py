@@ -16,14 +16,22 @@ import scipy.sparse as sp
 from sklearn.metrics.pairwise import euclidean_distances
 import pandas as pd
 from fuzzy_cmeans import FCM 
+# from fcmeans import FCM
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import shuffle
 from sklearn import metrics as m
 np.random.seed(0)
 
+from sklearn.preprocessing import StandardScaler as scaler
+
 cluster=3
 data=pd.read_csv('../../../dataset/iris.data.txt', header=None, sep=',')  #
+
 datasetname='iris'
+
+# ss=scaler()
+# data.iloc[:, :-1]=ss.fit_transform(data.iloc[:, :-1])
+
 x= np.asarray(data.iloc[:, :-1]) 
 y= np.asarray(data.iloc[:, -1]) 
 le=LabelEncoder()
@@ -45,7 +53,7 @@ for i in range(5):
     le=LabelEncoder()
     y=le.fit_transform(y)
     
-    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50)
+    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50,m=1.7)
     fuzzy_cmeans2.centers=initializ_centroids(x,cluster)
     fuzzy_cmeans2.fit(x)
     centers = fuzzy_cmeans2.centers
@@ -70,15 +78,15 @@ data3=pd.read_csv('FCM_2_pred.txt');
 data4=pd.read_csv('FCM_3_pred.txt');
 data5=pd.read_csv('FCM_4_pred.txt');
 
-data6=pd.read_csv('FCM_5_pred.txt');
-data7=pd.read_csv('FCM_6_pred.txt');
-data8=pd.read_csv('FCM_7_pred.txt');
-data9=pd.read_csv('FCM_8_pred.txt');
-data10=pd.read_csv('FCM_9_pred.txt');
+# data6=pd.read_csv('FCM_5_pred.txt');
+# data7=pd.read_csv('FCM_6_pred.txt');
+# data8=pd.read_csv('FCM_7_pred.txt');
+# data9=pd.read_csv('FCM_8_pred.txt');
+# data10=pd.read_csv('FCM_9_pred.txt');
 
 
-datalist=[data1,data2,data3,data4,data5,
-          data6,data7,data8,data9,data10]
+datalist=[data1,data2,data3,data4,data5]
+          # data6,data7,data8,data9,data10]
 
 noclasses=np.unique(data1.Actual).shape[0]
 print('noclasses',noclasses)

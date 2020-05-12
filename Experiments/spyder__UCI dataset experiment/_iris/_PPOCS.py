@@ -183,6 +183,12 @@ def _k_init(X, n_clusters, x_squared_norms, random_state, n_local_trials=None):
 cluster=3
 data=pd.read_csv('../../../dataset/iris.data.txt', header=None, sep=',')  #
 datasetname='iris'
+ 
+from sklearn.preprocessing import StandardScaler
+ss=StandardScaler()
+data.iloc[:, :-1]=ss.fit_transform(data.iloc[:, :-1])
+
+
 x= np.asarray(data.iloc[:, :-1]) 
 y= np.asarray(data.iloc[:, -1]) 
 le=LabelEncoder()

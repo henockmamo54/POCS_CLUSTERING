@@ -45,7 +45,7 @@ for i in range(5):
     le=LabelEncoder()
     y=le.fit_transform(y)
     
-    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50)
+    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50,m=180,error=1e-2)
 #     fuzzy_cmeans2.centers=c
     fuzzy_cmeans2.fit(x)
     centers = fuzzy_cmeans2.centers
