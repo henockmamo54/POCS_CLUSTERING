@@ -34,7 +34,7 @@ le=LabelEncoder()
 y=le.fit_transform(y)
 data.tail() 
 
-for i in range(5):
+for i in range(10):
     
     data=shuffle(data)
     x= np.asarray(data.iloc[:, 1:-1]) 
@@ -63,16 +63,14 @@ data2=pd.read_csv('KMEANS_1_pred.txt');
 data3=pd.read_csv('KMEANS_2_pred.txt');
 data4=pd.read_csv('KMEANS_3_pred.txt');
 data5=pd.read_csv('KMEANS_4_pred.txt');
+data6=pd.read_csv('KMEANS_5_pred.txt');
+data7=pd.read_csv('KMEANS_6_pred.txt');
+data8=pd.read_csv('KMEANS_7_pred.txt');
+data9=pd.read_csv('KMEANS_8_pred.txt');
+data10=pd.read_csv('KMEANS_9_pred.txt');
 
-# data6=pd.read_csv('KMEANS_5_pred.txt');
-# data7=pd.read_csv('KMEANS_6_pred.txt');
-# data8=pd.read_csv('KMEANS_7_pred.txt');
-# data9=pd.read_csv('KMEANS_8_pred.txt');
-# data10=pd.read_csv('KMEANS_9_pred.txt');
 
-
-datalist=[data1,data2,data3,data4,data5]
-          # data6,data7,data8,data9,data10]
+datalist=[data1,data2,data3,data4,data5,data6,data7,data8,data9,data10]
 
 noclasses=np.unique(data1.Actual).shape[0]
 print('noclasses',noclasses)
@@ -113,10 +111,10 @@ for h in range(len(datalist)):
     print(h)
     
 
-print('Accuracy',np.average(Accuracy))
-print('Precision',np.average(Precision))
-print('Recall',np.average(Recall))
-print('F1_score',np.average(F1_score))
+print('Accuracy',np.average(Accuracy) , ' std= ',np.std(Accuracy))
+print('Precision',np.average(Precision), ' std= ',np.std(Precision))
+print('Recall',np.average(Recall), ' std= ',np.std(Recall))
+print('F1_score',np.average(F1_score), ' std= ',np.std(F1_score))
 
 
 

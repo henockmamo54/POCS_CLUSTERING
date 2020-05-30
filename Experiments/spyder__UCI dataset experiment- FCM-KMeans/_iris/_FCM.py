@@ -20,7 +20,7 @@ from fuzzy_cmeans import FCM
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import shuffle
 from sklearn import metrics as m
-np.random.seed(0)
+np.random.seed(40)
 
 from sklearn.preprocessing import StandardScaler as scaler
 
@@ -45,7 +45,7 @@ def initializ_centroids(X,n_clusters):
 
     
 
-for i in range(5):
+for i in range(10):
     
     data=shuffle(data)
     x= np.asarray(data.iloc[:, :-1]) 
@@ -53,7 +53,7 @@ for i in range(5):
     le=LabelEncoder()
     y=le.fit_transform(y)
     
-    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50,m=1.7)
+    fuzzy_cmeans2 = FCM(n_clusters=cluster,max_iter=50,m=1.01)
     fuzzy_cmeans2.centers=initializ_centroids(x,cluster)
     fuzzy_cmeans2.fit(x)
     centers = fuzzy_cmeans2.centers
@@ -77,16 +77,14 @@ data2=pd.read_csv('FCM_1_pred.txt');
 data3=pd.read_csv('FCM_2_pred.txt');
 data4=pd.read_csv('FCM_3_pred.txt');
 data5=pd.read_csv('FCM_4_pred.txt');
+data6=pd.read_csv('FCM_5_pred.txt');
+data7=pd.read_csv('FCM_6_pred.txt');
+data8=pd.read_csv('FCM_7_pred.txt');
+data9=pd.read_csv('FCM_8_pred.txt');
+data10=pd.read_csv('FCM_9_pred.txt');
 
-# data6=pd.read_csv('FCM_5_pred.txt');
-# data7=pd.read_csv('FCM_6_pred.txt');
-# data8=pd.read_csv('FCM_7_pred.txt');
-# data9=pd.read_csv('FCM_8_pred.txt');
-# data10=pd.read_csv('FCM_9_pred.txt');
 
-
-datalist=[data1,data2,data3,data4,data5]
-          # data6,data7,data8,data9,data10]
+datalist=[data1,data2,data3,data4,data5, data6,data7,data8,data9,data10]
 
 noclasses=np.unique(data1.Actual).shape[0]
 print('noclasses',noclasses)
@@ -127,7 +125,7 @@ for h in range(len(datalist)):
     print(h)
     
 
-print('Accuracy',np.average(Accuracy))
-print('Precision',np.average(Precision))
-print('Recall',np.average(Recall))
-print('F1_score',np.average(F1_score))
+print('Accuracy',np.average(Accuracy) , ' std= ',np.std(Accuracy))
+print('Precision',np.average(Precision), ' std= ',np.std(Precision))
+print('Recall',np.average(Recall), ' std= ',np.std(Recall))
+print('F1_score',np.average(F1_score), ' std= ',np.std(F1_score))
