@@ -112,9 +112,9 @@ for h in range(len(datalist)):
     
 
 print('Accuracy',np.average(Accuracy) , ' std= ',np.std(Accuracy))
-print('Precision',np.average(Precision))
-print('Recall',np.average(Recall))
-print('F1_score',np.average(F1_score))
+print('Precision',np.average(Precision), ' std= ',np.std(Precision))
+print('Recall',np.average(Recall), ' std= ',np.std(Recall))
+print('F1_score',np.average(F1_score), ' std= ',np.std(F1_score))
 
 
 

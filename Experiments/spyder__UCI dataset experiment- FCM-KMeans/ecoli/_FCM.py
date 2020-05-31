@@ -72,7 +72,6 @@ data2=pd.read_csv('FCM_1_pred.txt');
 data3=pd.read_csv('FCM_2_pred.txt');
 data4=pd.read_csv('FCM_3_pred.txt');
 data5=pd.read_csv('FCM_4_pred.txt');
-
 data6=pd.read_csv('FCM_5_pred.txt');
 data7=pd.read_csv('FCM_6_pred.txt');
 data8=pd.read_csv('FCM_7_pred.txt');
@@ -122,7 +121,11 @@ for h in range(len(datalist)):
     print(h)
     
 
-print('Accuracy',np.average(Accuracy))
-print('Precision',np.average(Precision))
-print('Recall',np.average(Recall))
-print('F1_score',np.average(F1_score))
+print('Accuracy',np.average(Accuracy) , ' std= ',np.std(Accuracy))
+print('Precision',np.average(Precision), ' std= ',np.std(Precision))
+print('Recall',np.average(Recall), ' std= ',np.std(Recall))
+print('F1_score',np.average(F1_score), ' std= ',np.std(F1_score))
+
+
+
+
