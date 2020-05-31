@@ -11,10 +11,14 @@ class Kmeans:
         self.random_state = random_state
 
     def initializ_centroids(self, X):
-        np.random.RandomState(self.random_state)
-        random_idx = np.random.permutation(X.shape[0])
-        centroids = X[random_idx[:self.n_clusters]]
-        return centroids
+        centers=[]
+        c=self.n_clusters
+        _min= (np.min(X))
+        _max= (np.max(X))
+        t= np.mean(X,axis=0)    
+        for i in range(c):
+            centers.append( t + np.random.uniform(low=1, high=2.5)*i)   
+        return np.asarray(centers)
 
     def compute_centroids(self, X, labels):
         centroids = np.zeros((self.n_clusters, X.shape[1]))
