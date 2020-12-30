@@ -4,7 +4,7 @@ from scipy.spatial.distance import cdist
 
 
 class FCM:
-    def __init__(self, n_clusters=4, max_iter=100, m=2, error=1e-6):
+    def __init__(self, n_clusters=4, max_iter=50, m=0.1, error=1e-12):
         super().__init__()
         self.u, self.centers = None, None
         self.n_clusters = n_clusters
